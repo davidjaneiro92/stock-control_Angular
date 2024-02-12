@@ -12,10 +12,12 @@ import { ChartModule } from 'primeng/chart';
 import { SidebarModule } from "primeng/sidebar";
 import { ToastModule } from 'primeng/toast';
 import { ToolbarModule } from 'primeng/toolbar';
+import { DashboardHomeComponent } from 'src/app/modules/dashboard/page/dashboard-home/dashboard-home.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [DashboardHomeComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -28,10 +30,10 @@ import { ToolbarModule } from 'primeng/toolbar';
     CardModule,
     ToastModule,
     ChartModule,
-    // shared
 
-
+    SharedModule
   ],
+  exports:[DashboardHomeComponent],
   providers: [CookieService,MessageService]
 })
 export class DashboardModule { }
