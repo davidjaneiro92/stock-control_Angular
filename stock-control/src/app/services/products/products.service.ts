@@ -12,20 +12,22 @@ export class ProductsService {
 
   private API_URL = environments.API_URL;
   private JWT_TOKEN = this.cookie.get('USER_INFO');
-  private httpOptins = {
+  private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${this.JWT_TOKEN}`
+      Authorization: `Bearer ${this.JWT_TOKEN}`,
     }),
   };
 
-  constructor(private http: HttpClient, private cookie: CookieService) { }
+  constructor(private http: HttpClient, private cookie: CookieService) {}
 
-  getAllProducts(): Observable<Array<GetAllProductsResponse>>{
-    return this.http.get<Array<GetAllProductsResponse>>(
-      `${this.API_URL}/products`,
-      this.httpOptins
-    )
-    .pipe(map((product) => product.filter((data) => data?.amout > 0 )));
-   }
+  getAllProducts(): Observable<Array<GetAllProductsResponse>> {
+    return this.http
+      .get<Array<GetAllProductsResponse>>(
+        `${this.API_URL}/products`,
+        this.httpOptions
+      )
+      .pipe(map((product) => product.filter((data) => data?.amount > 0)));
+  }
 }
+
